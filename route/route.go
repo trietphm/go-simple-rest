@@ -12,11 +12,49 @@ type Route struct {
 	HandlerFunc http.HandlerFunc
 }
 
-var routes = []Route{
+type Routes []Route
+
+var routes = Routes{
 	Route{
 		"Index",
 		"GET",
 		"/",
 		handlers.Index,
+	},
+	Route{
+		"Posts",
+		"GET",
+		"/posts",
+		handlers.List,
+	},
+	Route{
+		"Distinc",
+		"GET",
+		"/posts/distinc",
+		handlers.Distinc,
+	},
+	Route{
+		"CreatePost",
+		"POST",
+		"/posts",
+		handlers.Create,
+	},
+	Route{
+		"GetPost",
+		"GET",
+		"/post/{id}",
+		handlers.GetPostById,
+	},
+	Route{
+		"UpdatePost",
+		"PUT",
+		"/posts",
+		handlers.UpdatePost,
+	},
+	Route{
+		"DeletePost",
+		"DELETE",
+		"/post/{id}",
+		handlers.DeletePost,
 	},
 }
