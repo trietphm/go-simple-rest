@@ -23,6 +23,12 @@ func (r *ResourcePost) List() ([]m.Post, error) {
 	return posts, err
 }
 
+func (r *ResourcePost) Query() ([]m.Post, error) {
+	var posts []m.Post
+	err := collection(colName).Find(bson.M{"content": "nanana"}).All(&posts)
+	return posts, err
+}
+
 func (r *ResourcePost) Distinc() ([]m.Post, error) {
 	var posts []m.Post
 	err := collection(colName).Find(nil).Distinct("content", &posts)

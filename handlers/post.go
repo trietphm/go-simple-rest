@@ -34,6 +34,18 @@ func Distinc(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func Query(w http.ResponseWriter, r *http.Request) {
+	setHeaderAndEncode(w, http.StatusOK)
+	var posts []models.Post
+	var err error
+	if posts, err = postResource.Query(); err != nil {
+		panic(err)
+	}
+	if err := json.NewEncoder(w).Encode(posts); err != nil {
+		panic(err)
+	}
+}
+
 func Create(w http.ResponseWriter, r *http.Request) {
 	var post models.Post
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))

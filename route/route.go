@@ -28,6 +28,12 @@ var routes = Routes{
 		handlers.List,
 	},
 	Route{
+		"Query",
+		"GET",
+		"/query",
+		handlers.Query,
+	},
+	Route{
 		"Distinc",
 		"GET",
 		"/posts/distinc",
